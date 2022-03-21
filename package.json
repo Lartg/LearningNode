@@ -1,0 +1,22 @@
+{
+  "name": "node-gif-search-master",
+  "version": "1.0.0",
+  "description": "## What you will learn",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lartg/LearningNode.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lartg/LearningNode/issues"
+  },
+  "homepage": "https://github.com/Lartg/LearningNode#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
