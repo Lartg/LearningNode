@@ -6,3 +6,4 @@ P02-Root-Route
 P03-Search-Gifs
 P04-Add-Styling
 node_modules
+.env

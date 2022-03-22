@@ -1,5 +1,8 @@
 // Require Libraries
+require('dotenv').config();
+const fetch = require('node-fetch');
 const express = require('express');
+
 
 // App Setup
 const app = express();
@@ -10,13 +13,26 @@ const { engine } = require('express-handlebars');
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', './views');
+app.use(express.static('public'));
 
 
 // Routes
-app.get('/', (req, res) => {
-  const gifUrl = 'https://media1.tenor.com/images/561c988433b8d71d378c9ccb4b719b6c/tenor.gif?itemid=10058245'
-  req.render('hello-gif', { gifUrl })
-});
+app.get('/', 
+  (req, res) => {
+    let term = "";
+    if (req.query.term) {
+      term = req.query.term
+    }
+    fetch(`https://g.tenor.com/v1/search?q=${term}&key=${process.env.API_KEY}&limit=10`)
+    .then(response => response.json())
+    .then(
+      (data) => {
+        const gifs = data.results;
+        res.render('home', { gifs });
+      }
+    );
+  }
+);
 
 // Start Server
 
